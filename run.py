@@ -17,7 +17,7 @@ def create_app():
     app.config.from_object(Config)
 
     # Configuración de CORS
-    CORS(app, resources={r"/*": {"origins": "https://backen-parqueadero.onrender.com"}})
+    CORS(app, resources={r"/*": {"origins": "https://fronted-parqueadero.onrender.com/"}})
 
     # Configuración de JWT
     jwt = JWTManager(app)
