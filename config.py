@@ -21,8 +21,8 @@ class Config:
     MAIL_USERNAME = 'ordonezfelipe2816@gmail.com'
     MAIL_PASSWORD = 'tgop olmt qxql oykj'
     MAIL_DEFAULT_SENDER = 'ordonezfelipe2816@gmail.com'
-    URL_PRODUCCION= 'https://7366-45-167-125-15.ngrok-free.app'
-    URL_PRODUCCION_FRONTEND= 'https://8628-45-167-125-15.ngrok-free.app'
+    URL_PRODUCCION= 'https://backen-parqueadero.onrender.com'
+    URL_PRODUCCION_FRONTEND= 'https://fronted-parqueadero.onrender.com'
 
 
 
