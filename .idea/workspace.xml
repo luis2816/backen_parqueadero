@@ -5,30 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15218548-5feb-48bf-bc9b-4f821c88fa32" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/conjunto_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/mercado_pago_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/transaccion_temporal_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/user_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/vigilante_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/webhook_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/conjunto_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/transaccion_temporal_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/user_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/vigilante_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/webhook_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/conjunto_routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/mercado_pago_routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/transaccion_temporal_router.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/user_routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/vigilante_routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/webhook_routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/email_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.tsx" afterDir="false" />
@@ -44,7 +23,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -127,5 +106,16 @@
       <updated>1723603703366</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
