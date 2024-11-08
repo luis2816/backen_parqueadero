@@ -5,3 +5,4 @@ Flask-Mail==0.10.0
 psycopg2==2.9.9
 Flask-Mercadopago== 1.0.0
 mercadopago==2.2.3
+gunicorn
