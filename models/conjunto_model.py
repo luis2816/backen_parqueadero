@@ -3,7 +3,7 @@ from db import get_db_connection
 import psycopg2
 
 def insert_conjunto(nombre, direccion, telefono, numero_apartamentos, numero_parqueaderos_residentes, numero_parqueaderos_visitantes, usuario_id,
-                    descripcion, servicios_comunes, reglamento_interno, email_contacto, website, zona, ciudad, codigo_postal):
+                    descripcion, servicios_comunes, reglamento_interno, email_contacto, website, departamento, municipio, codigo_postal, soporte_path):
     try:
         conn = get_db_connection()
         if conn is None:
@@ -13,14 +13,47 @@ def insert_conjunto(nombre, direccion, telefono, numero_apartamentos, numero_par
             cur.execute(
                 """
                 INSERT INTO conjuntos_cerrados (nombre, direccion, telefono, numero_apartamentos, numero_parqueaderos_residentes, numero_parqueaderos_visitantes, usuario_id,
-                    descripcion, servicios_comunes, reglamento_interno, email_contacto, website, zona, ciudad, codigo_postal)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+                    descripcion, servicios_comunes, reglamento_interno, email_contacto, website, departamento, municipio, codigo_postal, soporte_path)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
                 """,
                 (nombre, direccion, telefono, numero_apartamentos, numero_parqueaderos_residentes, numero_parqueaderos_visitantes, usuario_id,
-                 descripcion, servicios_comunes, reglamento_interno, email_contacto, website, zona, ciudad, codigo_postal)
+                 descripcion, servicios_comunes, reglamento_interno, email_contacto, website, departamento, municipio, codigo_postal, soporte_path)
             )
             conn.commit()
             return "Registro exitoso"
+    except psycopg2.Error as e:
+        raise Exception(f"Database error: {e}")
+    finally:
+        if conn is not None:
+            conn.close()
+
+
+
+def update_conjunto(conjunto_id, nombre, direccion, telefono, numero_apartamentos,
+                    numero_parqueaderos_residentes, numero_parqueaderos_visitantes, usuario_id,
+                    descripcion, servicios_comunes, reglamento_interno, email_contacto, website,
+                    departamento, municipio, codigo_postal,soporte_path):
+    try:
+        conn = get_db_connection()
+        if conn is None:
+            raise Exception("Database connection error")
+
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                UPDATE conjuntos_cerrados
+                SET nombre = %s, direccion = %s, telefono = %s, numero_apartamentos = %s, 
+                    numero_parqueaderos_residentes = %s, numero_parqueaderos_visitantes = %s, usuario_id = %s,
+                    descripcion = %s, servicios_comunes = %s, reglamento_interno = %s, email_contacto = %s, 
+                    website = %s, departamento = %s, municipio = %s, codigo_postal = %s, soporte_path =  %s
+                WHERE id = %s;
+                """,
+                (nombre, direccion, telefono, numero_apartamentos, numero_parqueaderos_residentes,
+                 numero_parqueaderos_visitantes, usuario_id, descripcion, servicios_comunes, reglamento_interno,
+                 email_contacto, website, departamento, municipio, codigo_postal,soporte_path, conjunto_id, )
+            )
+            conn.commit()
+            return "Actualización exitosa"
     except psycopg2.Error as e:
         raise Exception(f"Database error: {e}")
     finally:
@@ -39,7 +72,7 @@ def get_conjuntos_porUsuario(id_usuario):
         cur.execute("""
             SELECT id, nombre, direccion, telefono, numero_apartamentos, numero_parqueaderos_residentes,
                    numero_parqueaderos_visitantes, fecha_creacion, usuario_id, descripcion, servicios_comunes,
-                   reglamento_interno, email_contacto, website, zona, ciudad, codigo_postal, estado
+                   reglamento_interno, email_contacto, website, departamento, municipio, codigo_postal, estado, soporte_path
             FROM public.conjuntos_cerrados
             WHERE usuario_id = %s;
         """, (id_usuario,))

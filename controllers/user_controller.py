@@ -1,10 +1,12 @@
 # controllers/user_controller.py
 from flask import request, jsonify, send_from_directory, current_app as app
-from models.user_model import get_users, get_token_info, get_user_by_email_and_password, hash_password, get_user_id, get_user_photo,check_user_exists, insert_user, update_user_photo, update_user, get_user_password, update_user_password, validate_token_and_update_password,check_user_exists_email
+from models.user_model import get_users, get_token_info, get_user_by_email, hash_password, get_user_id, get_user_photo,check_user_exists, insert_user, update_user_photo, update_user, get_user_password, update_user_password, validate_token_and_update_password,check_user_exists_email
 from flask_jwt_extended import create_access_token
 from datetime import datetime
+from werkzeug.security import check_password_hash
 
 import os
+
 
 def get_users_controller():
     """Controlador para obtener todos los usuarios."""
@@ -36,28 +38,32 @@ def get_users_controller():
         return jsonify(result), 200
     except Exception as e:
         return jsonify({"msg": str(e)}), 500
-
 def login_controller():
     """Controlador para el inicio de sesión del usuario."""
     data = request.get_json()
-    email = data.get('email')
-    password = data.get('password')
-    hashed_password = hash_password(password)
-    print(hashed_password)
+    email = data.get("email")
+    password = data.get("password")
 
-    user = get_user_by_email_and_password(email, hashed_password)
-    if user:
+
+    # Buscar usuario en la base de datos por email
+    user = get_user_by_email(email)
+    print(user[4])
+    print(hash_password(password))
+    if user and user[4] == hash_password(password):  # user[4] es el hash MD5 en la BD        access_token = create_access_token(identity=email)
         access_token = create_access_token(identity=email)
+        base_url = request.host_url + 'api/usuario/'
+        foto_perfil_url = f'{base_url}{user[0]}/foto' if user[3] else ''
         user_data = {
             "id": user[0],
             "nombre": user[1],
             "apellido": user[2],
-            "foto_perfil": user[3],
+            "foto_perfil": foto_perfil_url,
         }
+
+        print(user_data)
         return jsonify({"access_token": access_token, "user": user_data, "status": 200}), 200
     else:
-        return jsonify({"message": "Credenciales incorrectas", "status": 401}), 401
-
+        return jsonify({"message": "Credenciales incorrectas", "status": 401}), 200
 def get_user_id_controller():
     user_id = request.args.get('id_usuario', type=int)
 
@@ -68,7 +74,7 @@ def get_user_id_controller():
         if not usuario:
             return jsonify({"msg": "User not found"}), 404
 
-        base_url = 'api/usuario/'
+        base_url = request.host_url + 'api/usuario/'
         foto_perfil_url = f'{base_url}{usuario[0]}/foto' if usuario[13] else ''
 
         ##Administrador de conjunto cerrado
@@ -98,7 +104,6 @@ def get_user_id_controller():
     except Exception as e:
         print(e)
         return jsonify({"msg": str(e)}), 500
-
 def get_user_photo_controller(user_id):
     """Controlador para obtener la foto de perfil de un usuario."""
     try:
@@ -109,7 +114,6 @@ def get_user_photo_controller(user_id):
         return send_from_directory(app.config['UPLOAD_FOLDER_FOTO_PERFIL'], foto_perfil)
     except Exception as e:
         return jsonify({"msg": str(e)}), 500
-
 def allowed_file(filename):
     # Define qué extensiones de archivo son permitidas
     ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}

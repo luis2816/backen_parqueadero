@@ -18,3 +18,4 @@ user_bp.route('/verificar_email', methods=['POST'])(verificar_user_email)
 
 
 
+

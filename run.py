@@ -7,6 +7,7 @@ from routes.mercado_pago_routes import mercado_pago_bp
 from routes.webhook_routes import webhook_bp
 from routes.transaccion_temporal_router import transaccion_temporal_bp
 from routes.vigilante_routes import vigilante_bp
+from routes.residentes_routes import residentes_bp
 from flask_jwt_extended import JWTManager
 from flask_mail import Mail
 
@@ -16,9 +17,8 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    # Configuración de CORS
-    CORS(app, resources={r"/*": {"origins": "https://fronted-parqueadero.onrender.com"}})
-
+    # Configuración de CORS: Solo permitir solicitudes desde el frontend en Vite
+    CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
     # Configuración de JWT
     jwt = JWTManager(app)
 
@@ -32,6 +32,7 @@ def create_app():
     app.register_blueprint(webhook_bp, url_prefix='/api')
     app.register_blueprint(transaccion_temporal_bp, url_prefix='/api')
     app.register_blueprint(vigilante_bp, url_prefix='/api')
+    app.register_blueprint(residentes_bp, url_prefix='/api')
 
     return app
 

@@ -38,8 +38,8 @@ def get_users():
 
     return usuarios
 
-def get_user_by_email_and_password(email, hashed_password):
-    """Obtiene un usuario por email y contraseña hash de la base de datos."""
+def get_user_by_email(email):
+    """Obtiene un usuario por email."""
     conn = get_db_connection()
     if conn is None:
         return None
@@ -47,10 +47,11 @@ def get_user_by_email_and_password(email, hashed_password):
     cur = conn.cursor()
     try:
         cur.execute("""
-            SELECT id, nombre, apellido, foto_perfil
+            SELECT id, nombre, apellido, foto_perfil, password
             FROM usuarios
-            WHERE email = %s AND password = %s;
-        """, (email, hashed_password))
+            WHERE email = %s;
+        """, (email,))  # ✅ Agregar la coma final para evitar errores
+
         user = cur.fetchone()
     except psycopg2.Error as e:
         print(f"Database error: {e}")
