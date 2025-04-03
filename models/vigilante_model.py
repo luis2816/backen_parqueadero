@@ -107,5 +107,30 @@ def update_vigilante(user_id, updates):
         conn.close()
 
 
+def obtener_conjuntos_vigilante(user_id):
+    conn = get_db_connection()
+    if conn is None:
+        raise Exception("No se pudo establecer conexión con la base de datos")
 
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT id_conjunto 
+                FROM public.vigilantes_conjunto 
+                WHERE id_usuario = %s
+            """, (user_id,))
 
+            # Obtener nombres de columnas
+            columns = [desc[0] for desc in cur.description]
+
+            # Crear lista de diccionarios
+            conjuntos = [dict(zip(columns, row)) for row in cur.fetchall()]
+
+            return conjuntos
+
+    except psycopg2.Error as e:
+        print(f"Error de base de datos al obtener conjuntos del vigilante: {e}")
+        return []
+    finally:
+        if conn is not None:
+            conn.close()

@@ -6,6 +6,8 @@ from datetime import datetime
 
 import os
 
+from models.vigilante_model import obtener_conjuntos_vigilante
+
 
 def get_users_controller():
     """Controlador para obtener todos los usuarios."""
@@ -63,46 +65,67 @@ def login_controller():
         return jsonify({"access_token": access_token, "user": user_data, "status": 200}), 200
     else:
         return jsonify({"message": "Credenciales incorrectas", "status": 401}), 200
+
+
 def get_user_id_controller():
+    """Controlador para obtener un usuario por ID con su conjunto asignado si es vigilante"""
     user_id = request.args.get('id_usuario', type=int)
 
-    """Controlador para obtener un usuario por ID."""
-    try:
-        usuario = get_user_id(user_id)
-        print(usuario)
-        if not usuario:
-            return jsonify({"msg": "User not found"}), 404
+    if not user_id:
+        return jsonify({"msg": "Se requiere el parámetro id_usuario"}), 400
 
+    try:
+        # Obtener datos básicos del usuario
+        usuario = get_user_id(user_id)
+        if not usuario:
+            return jsonify({"msg": "Usuario no encontrado"}), 404
+
+        # Construir URL para foto de perfil
         base_url = request.host_url + 'api/usuario/'
         foto_perfil_url = f'{base_url}{usuario[0]}/foto' if usuario[13] else ''
 
-        ##Administrador de conjunto cerrado
-        if usuario[11] == 1:
-            result = {
-                'id': usuario[0],
-                'nombre': usuario[1],
-                'apellido': usuario[2],
-                'tipo_identificacion': usuario[3],
-                'numero_identificacion': usuario[4],
-                'sexo': usuario[5],
-                'email': usuario[6],
-                'telefono': usuario[8],
-                'fecha_nacimiento': usuario[9],
-                'fecha_registro': usuario[10],
-                'rol_id': usuario[11],
-                'estado': usuario[12],
-                'cantidad_licencia': usuario[13],
-                'foto_perfil': usuario[14] if usuario[14] else '',
-                'foto_perfil_url': foto_perfil_url,
-                'rol': usuario[15]
-            }
+        # Estructura base del resultado
+        result = {
+            'id': usuario[0],
+            'nombre': usuario[1],
+            'apellido': usuario[2],
+            'tipo_identificacion': usuario[3],
+            'numero_identificacion': usuario[4],
+            'sexo': usuario[5],
+            'email': usuario[6],
+            'telefono': usuario[8],
+            'fecha_nacimiento': usuario[9],
+            'fecha_registro': usuario[10],
+            'rol_id': usuario[11],
+            'estado': usuario[12],
+            'cantidad_licencia': usuario[13],
+            'foto_perfil': usuario[14] if usuario[14] else '',
+            'foto_perfil_url': foto_perfil_url,
+            'rol': usuario[15]
+        }
 
-
+        # Si es vigilante (rol_id = 2), obtener conjunto asignado
+        if usuario[11] == 2:
+            try:
+                conjuntos = obtener_conjuntos_vigilante(user_id)
+                if conjuntos:
+                    # Tomar solo el primer conjunto (asumiendo que hay máximo uno)
+                    result['conjunto_asignado'] = conjuntos[0]['id_conjunto']  # Formato directo: "conjunto_asignado": 1
+                else:
+                    result['conjunto_asignado'] = None
+            except Exception as e:
+                print(f"Error al obtener conjunto: {e}")
+                result['conjunto_asignado'] = None
+                result['warning'] = "No se pudo cargar el conjunto asignado"
 
         return jsonify(result), 200
+
     except Exception as e:
-        print(e)
-        return jsonify({"msg": str(e)}), 500
+        print(f"Error en get_user_id_controller: {str(e)}")
+        return jsonify({
+            "msg": "Error interno del servidor",
+            "error": str(e)
+        }), 500
 def get_user_photo_controller(user_id):
     """Controlador para obtener la foto de perfil de un usuario."""
     try:
