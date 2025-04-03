@@ -9,7 +9,7 @@ from datetime import datetime
 import  json
 
 
-sdk = mercadopago.SDK("TEST-2127615831853917-092013-528910d7dd8da719effb3303355f0ee1-2000752194")
+sdk = mercadopago.SDK("TEST-6016242716648256-040301-45e8c8a0fe3644074d60dba0cedadfe8-2000752194")
 
 def pay():
     url_backend = current_app.config['URL_PRODUCCION']
