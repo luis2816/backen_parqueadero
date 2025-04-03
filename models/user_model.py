@@ -1,12 +1,9 @@
 # models/user_model.py
-from flask import request
 import hashlib
 import secrets
 from db import get_db_connection
 from datetime import datetime, timedelta
-from utils.email_utils import send_email_to_user
 import psycopg2
-from flask import current_app
 
 
 

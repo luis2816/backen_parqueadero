@@ -5,29 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15218548-5feb-48bf-bc9b-4f821c88fa32" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/residentes_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/residentes_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/residentes_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/backend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/movimiento_vehiculo_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/movimiento_vehiculo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/movimiento_vehiculo_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/conjunto_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/conjunto_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/residentes_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/residentes_controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/vigilante_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/vigilante_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foto_perfil/102_foto.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/foto_perfil/107_foto.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/foto_perfil/109_foto.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/foto_perfil/110_foto.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/foto_perfil/111_foto.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/foto_perfil/112_foto.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/foto_perfil/114_foto.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/conjunto_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/conjunto_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foto_perfil/1_foto.png" beforeDir="false" afterPath="$PROJECT_DIR$/foto_perfil/1_foto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/residentes_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/residentes_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/user_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/user_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/vigilante_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/vigilante_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/conjunto_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes/conjunto_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/vigilante_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes/vigilante_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/residentes_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes/residentes_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,17 +38,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.run.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/luis2816/Documentos/Proyectos_tesis/backen_parqueadero/routes&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.run.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/luis2816/Documentos/Proyectos_tesis/backen_parqueadero/routes",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/routes" />

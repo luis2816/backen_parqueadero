@@ -6,10 +6,10 @@ class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'super-secret')
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'super-secret')  # Cambia esto por una clave secreta más segura
     DATABASE = {
-        'dbname': os.getenv('DB_NAME', 'secury_park'),
-        'user': os.getenv('DB_USER', 'parqueadero'),
-        'password': os.getenv('DB_PASSWORD', 'Felipe2816'),
-        'host': os.getenv('DB_HOST', 'localhost'),
+        'dbname': os.getenv('DB_NAME', 'secury_park_iny2'),
+        'user': os.getenv('DB_USER', 'secury_park_iny2_user'),
+        'password': os.getenv('DB_PASSWORD', 'nawWNMIlFHddgWyGwB1y9C7Mhnw8qskg'),
+        'host': os.getenv('DB_HOST', 'pg-cvmru66mcj7s73bvnq60-a.oregon-postgres.render.com'),
         'port': os.getenv('DB_PORT', '5432')
     }
     URL_BACKEND = os.getenv('URL_BACKEND', '127.0.0.1')
@@ -21,8 +21,5 @@ class Config:
     MAIL_USERNAME = 'ordonezfelipe2816@gmail.com'
     MAIL_PASSWORD = 'tgop olmt qxql oykj'
     MAIL_DEFAULT_SENDER = 'ordonezfelipe2816@gmail.com'
-    URL_PRODUCCION= 'http://localhost:1777'
-    URL_PRODUCCION_FRONTEND= 'https://localhost:3000'
-
-
-
+    URL_PRODUCCION= 'https://backen-parqueadero.onrender.com'
+    URL_PRODUCCION_FRONTEND= 'hhttps://fronted-parqueadero.onrender.com'

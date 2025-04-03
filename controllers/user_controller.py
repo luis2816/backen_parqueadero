@@ -3,7 +3,6 @@ from flask import request, jsonify, send_from_directory, current_app as app
 from models.user_model import get_users, get_token_info, get_user_by_email, hash_password, get_user_id, get_user_photo,check_user_exists, insert_user, update_user_photo, update_user, get_user_password, update_user_password, validate_token_and_update_password,check_user_exists_email
 from flask_jwt_extended import create_access_token
 from datetime import datetime
-from werkzeug.security import check_password_hash
 
 import os
 

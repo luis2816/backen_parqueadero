@@ -2,7 +2,7 @@ from flask import request, jsonify, current_app as app
 from models.vigilante_model import get_vigilantes_por_conjunto, insert_vigilante, insert_vigilante_conjunto, \
     update_vigilante
 import os
-from models.user_model import update_user_photo, check_user_exists, get_user_id, update_user
+from models.user_model import update_user_photo, check_user_exists, get_user_id
 
 
 def get_vigilantes():

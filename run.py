@@ -8,6 +8,7 @@ from routes.webhook_routes import webhook_bp
 from routes.transaccion_temporal_router import transaccion_temporal_bp
 from routes.vigilante_routes import vigilante_bp
 from routes.residentes_routes import residentes_bp
+from  routes.movimiento_vehiculo_routes import movimiento_vehiculo_bp
 from flask_jwt_extended import JWTManager
 from flask_mail import Mail
 
@@ -33,6 +34,7 @@ def create_app():
     app.register_blueprint(transaccion_temporal_bp, url_prefix='/api')
     app.register_blueprint(vigilante_bp, url_prefix='/api')
     app.register_blueprint(residentes_bp, url_prefix='/api')
+    app.register_blueprint(movimiento_vehiculo_bp, url_prefix='/api')
 
     return app
 
